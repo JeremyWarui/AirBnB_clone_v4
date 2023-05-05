@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 """ Starts a Flash Web Application """
+from uuid import uuid4
 from models import storage
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from os import environ
-import uuid
 from flask import Flask, render_template
+
+
 app = Flask(__name__)
 # app.jinja_env.trim_blocks = True
 # app.jinja_env.lstrip_blocks = True
@@ -36,7 +38,8 @@ def hbnb():
     places = sorted(places, key=lambda k: k.name)
 
     #add query string to avoid asset caching in flask
-    cache_id == uuid.uuid4()
+    cache_id = uuid4()
+
     return render_template('0-hbnb.html',
                            states=st_ct,
                            amenities=amenities,
